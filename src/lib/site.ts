@@ -20,6 +20,7 @@ export type Post = {
   tags: string[];
   readingTime: string;
   contentHtml: string;
+  image?: string;
 };
 
 
