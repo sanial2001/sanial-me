@@ -75,51 +75,50 @@ body {
   }
   
   /* Force visibility of all text elements */
-  h1, h2, h3, h4, h5, h6, p, span, div, a {
+  h1, h2, h3, h4, h5, h6, p, span, div, a, li, td, th {
     color: var(--foreground) !important;
   }
   
   /* Ensure buttons and interactive elements are visible */
-  button, a {
+  button, a, input, textarea, select {
     color: var(--foreground) !important;
+  }
+  
+  /* Force card backgrounds to be visible */
+  .bg-background, .bg-muted, .bg-accent {
+    background-color: var(--background) !important;
+  }
+  
+  /* Ensure borders are visible */
+  .border, .border-border {
+    border-color: var(--border) !important;
+  }
+  
+  /* Ensure muted text is visible but still muted */
+  .text-muted-foreground {
+    color: var(--muted-foreground) !important;
+  }
+  
+  /* Ensure gradient text is visible in dark mode */
+  .bg-gradient-to-r {
+    background: linear-gradient(to right, var(--primary), var(--secondary)) !important;
+  }
+  
+  /* Force visibility of all Tailwind classes */
+  .text-foreground {
+    color: var(--foreground) !important;
+  }
+  
+  .text-primary {
+    color: var(--primary) !important;
+  }
+  
+  .text-secondary {
+    color: var(--secondary) !important;
   }
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image:
-    radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Animated gradient background */
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    linear-gradient(45deg, transparent 30%, rgba(14, 165, 233, 0.015) 50%, transparent 70%),
-    linear-gradient(-45deg, transparent 30%, rgba(139, 92, 246, 0.015) 50%, transparent 70%);
-  animation: gradientShift 20s ease-in-out infinite;
-  pointer-events: none;
-  z-index: -1;
-}
-
-@keyframes gradientShift {
-  0%, 100% { opacity: 0.5; transform: translateX(0) translateY(0); }
-  50% { opacity: 1; transform: translateX(10px) translateY(-10px); }
-}
+/* Clean, minimal background - no distracting effects */
 
 /* Smooth scrolling */
 html {

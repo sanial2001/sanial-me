@@ -11,10 +11,8 @@ export default function BlogIndexPage() {
   return (
     <div className="space-y-12">
       <section className="space-y-6">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-          <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-            Engineering Blog
-          </span>
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
+          Engineering Blog
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl leading-relaxed">
           Deep dives into web platforms, performance optimization, and practical development techniques. 
