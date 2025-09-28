@@ -25,15 +25,18 @@ export default function Home() {
         
         {/* Profile Image */}
         <div className="flex justify-center lg:justify-end">
-          <div className="w-80 h-80 rounded-2xl overflow-hidden shadow-2xl">
+          <div className="w-80 h-80 rounded-2xl overflow-hidden shadow-2xl hover:shadow-lg transition-all duration-300 hover:scale-105">
         <Image
               src="/profile.jpg"
               alt="Sanial Das"
-              width={320}
-              height={320}
+              width={400}
+              height={400}
               className="w-full h-full object-cover"
           priority
-        />
+              quality={95}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+            />
           </div>
         </div>
       </section>
@@ -41,7 +44,9 @@ export default function Home() {
       {/* Professional Journey Cards */}
       <section className="space-y-8">
         <div className="text-center space-y-4">
-          <h2 className="text-3xl font-bold text-foreground">Professional Journey</h2>
+          <h2 className="text-3xl font-bold text-foreground">
+            Professional Journey
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             A backend developer at heart, I specialize in building scalable systems and driving technical innovation, with a keen interest in fintech and adtech domains.
           </p>
@@ -198,7 +203,9 @@ export default function Home() {
       {/* Social Connect Section */}
       <section className="text-center space-y-8">
         <div className="space-y-4">
-          <h2 className="text-3xl font-bold text-foreground">Connect with me</h2>
+          <h2 className="text-3xl font-bold text-foreground">
+            Connect with me
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Let&apos;s connect and share ideas about engineering, technology, and innovation.
           </p>
@@ -254,7 +261,9 @@ export default function Home() {
       {/* CTA Section */}
       <section className="text-center space-y-6">
         <div className="space-y-4">
-          <h2 className="text-3xl font-bold text-foreground">Ready to dive in?</h2>
+          <h2 className="text-3xl font-bold text-foreground">
+            Ready to dive in?
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Explore my latest thoughts on engineering, tools, and building better software.
           </p>

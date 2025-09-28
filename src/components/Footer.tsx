@@ -3,14 +3,12 @@ import { siteConfig } from "@/lib/site";
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-24 border-t border-border bg-gradient-to-r from-muted/50 to-muted/30">
-      <div className="mx-auto max-w-6xl px-6 py-16">
+    <footer className="mt-24 border-t border-border bg-background">
+      <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-          <div className="flex flex-col items-center lg:items-start gap-4">
-            <div className="text-center lg:text-left">
-              <p className="text-lg font-semibold text-foreground">© {year} Sanial Das</p>
-              <p className="text-sm text-muted-foreground mt-1">Engineering Blog & Portfolio</p>
-            </div>
+          <div className="flex flex-col items-center lg:items-start gap-2">
+            <p className="text-lg font-semibold text-foreground">© {year} Sanial Das</p>
+            <p className="text-sm text-muted-foreground">Engineering Blog & Portfolio</p>
           </div>
           <div className="flex flex-wrap gap-6">
             <a
