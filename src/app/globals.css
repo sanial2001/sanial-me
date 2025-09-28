@@ -1,20 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafbfc;
-  --foreground: #2d3748;
-  --muted: #f7fafc;
-  --muted-foreground: #718096;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
   --border: #e2e8f0;
-  --accent: #edf2f7;
-  --accent-foreground: #4a5568;
-  --primary: #3182ce;
+  --accent: #f1f5f9;
+  --accent-foreground: #334155;
+  --primary: #0ea5e9;
   --primary-foreground: #ffffff;
-  --secondary: #805ad5;
+  --secondary: #8b5cf6;
   --secondary-foreground: #ffffff;
-  --success: #38a169;
-  --warning: #d69e2e;
-  --error: #e53e3e;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%);
+  --gradient-secondary: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  --gradient-accent: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);
 }
 
 @theme inline {
@@ -36,23 +39,23 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Force light theme */
+/* Dark theme for dark mode preference */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #fafbfc;
-    --foreground: #2d3748;
-    --muted: #f7fafc;
-    --muted-foreground: #718096;
-    --border: #e2e8f0;
-    --accent: #edf2f7;
-    --accent-foreground: #4a5568;
-    --primary: #3182ce;
+    --background: #0a0b0d;
+    --foreground: #f8fafc;
+    --muted: #1a1b23;
+    --muted-foreground: #94a3b8;
+    --border: #2d3748;
+    --accent: #1e293b;
+    --accent-foreground: #e2e8f0;
+    --primary: #06b6d4;
     --primary-foreground: #ffffff;
-    --secondary: #805ad5;
+    --secondary: #8b5cf6;
     --secondary-foreground: #ffffff;
-    --success: #38a169;
-    --warning: #d69e2e;
-    --error: #e53e3e;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
   }
 }
 
@@ -64,6 +67,24 @@ body {
   position: relative;
 }
 
+/* Ensure proper contrast in dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--background) !important;
+    color: var(--foreground) !important;
+  }
+  
+  /* Force visibility of all text elements */
+  h1, h2, h3, h4, h5, h6, p, span, div, a {
+    color: var(--foreground) !important;
+  }
+  
+  /* Ensure buttons and interactive elements are visible */
+  button, a {
+    color: var(--foreground) !important;
+  }
+}
+
 body::before {
   content: '';
   position: fixed;
@@ -71,12 +92,33 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    radial-gradient(circle at 20% 80%, rgba(49, 130, 206, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(128, 90, 213, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(49, 130, 206, 0.02) 0%, transparent 50%);
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
+}
+
+/* Animated gradient background */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(45deg, transparent 30%, rgba(14, 165, 233, 0.015) 50%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(139, 92, 246, 0.015) 50%, transparent 70%);
+  animation: gradientShift 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes gradientShift {
+  0%, 100% { opacity: 0.5; transform: translateX(0) translateY(0); }
+  50% { opacity: 1; transform: translateX(10px) translateY(-10px); }
 }
 
 /* Smooth scrolling */
@@ -84,23 +126,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar for webkit browsers */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--muted-foreground);
-}
+/* Default scrollbar - no custom styling */
 
 /* Auto-scroll animation for professional journey cards */
 @keyframes scroll {
