@@ -11,8 +11,10 @@ export default function Home() {
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         <div className="space-y-6">
           <div className="space-y-4">
-            <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-foreground">
-              Hi, I&apos;m Sanial Das
+            <h1 className="text-5xl sm:text-6xl font-bold tracking-tight">
+              <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-pulse">
+                Hi, I&apos;m Sanial Das
+              </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl leading-relaxed">
               Senior Software Engineer with 2+ years of experience building scalable systems and handling large codebases. 
@@ -25,15 +27,21 @@ export default function Home() {
         
         {/* Profile Image */}
         <div className="flex justify-center lg:justify-end">
-          <div className="w-80 h-80 rounded-2xl overflow-hidden shadow-2xl">
-        <Image
-              src="/profile.jpg"
-              alt="Sanial Das"
-              width={320}
-              height={320}
-              className="w-full h-full object-cover"
-          priority
-        />
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-lg opacity-30 animate-pulse"></div>
+                   <div className="relative w-80 h-80 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-2xl hover:shadow-primary/20 transition-all duration-300 hover:scale-105">
+                     <Image
+                       src="/profile.jpg"
+                       alt="Sanial Das"
+                       width={400}
+                       height={400}
+                       className="w-full h-full object-cover"
+                       priority
+                       quality={95}
+                       placeholder="blur"
+                       blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                     />
+                   </div>
           </div>
         </div>
       </section>
@@ -41,9 +49,13 @@ export default function Home() {
       {/* Professional Journey Cards */}
       <section className="space-y-8">
         <div className="text-center space-y-4">
-          <h2 className="text-3xl font-bold text-foreground">Professional Journey</h2>
+          <h2 className="text-3xl font-bold">
+            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              Professional Journey
+            </span>
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A backend developer at heart, I specialize in building scalable systems and driving technical innovation, with a keen interest in fintech and adtech domains.
+            Exploring the intersection of technology and innovation through hands-on development and continuous learning.
           </p>
         </div>
         
@@ -198,7 +210,11 @@ export default function Home() {
       {/* Social Connect Section */}
       <section className="text-center space-y-8">
         <div className="space-y-4">
-          <h2 className="text-3xl font-bold text-foreground">Connect with me</h2>
+          <h2 className="text-3xl font-bold">
+            <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+              Connect with me
+            </span>
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Let&apos;s connect and share ideas about engineering, technology, and innovation.
           </p>
@@ -254,7 +270,11 @@ export default function Home() {
       {/* CTA Section */}
       <section className="text-center space-y-6">
         <div className="space-y-4">
-          <h2 className="text-3xl font-bold text-foreground">Ready to dive in?</h2>
+          <h2 className="text-3xl font-bold">
+            <span className="bg-gradient-to-r from-primary via-success to-secondary bg-clip-text text-transparent">
+              Ready to dive in?
+            </span>
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Explore my latest thoughts on engineering, tools, and building better software.
           </p>
