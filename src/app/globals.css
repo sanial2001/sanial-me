@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fafbfc;
+  --foreground: #2d3748;
+  --muted: #f7fafc;
+  --muted-foreground: #718096;
+  --border: #e2e8f0;
+  --accent: #edf2f7;
+  --accent-foreground: #4a5568;
+  --primary: #3182ce;
+  --primary-foreground: #ffffff;
+  --secondary: #805ad5;
+  --secondary-foreground: #ffffff;
+  --success: #38a169;
+  --warning: #d69e2e;
+  --error: #e53e3e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Force light theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #fafbfc;
+    --foreground: #2d3748;
+    --muted: #f7fafc;
+    --muted-foreground: #718096;
+    --border: #e2e8f0;
+    --accent: #edf2f7;
+    --accent-foreground: #4a5568;
+    --primary: #3182ce;
+    --primary-foreground: #ffffff;
+    --secondary: #805ad5;
+    --secondary-foreground: #ffffff;
+    --success: #38a169;
+    --warning: #d69e2e;
+    --error: #e53e3e;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(49, 130, 206, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(128, 90, 213, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(49, 130, 206, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Auto-scroll animation for professional journey cards */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
