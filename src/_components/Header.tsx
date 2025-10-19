@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/site";
 
@@ -20,8 +21,15 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md shadow-lg">
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="text-xl font-bold tracking-tight text-foreground hover:text-primary transition-colors">
-            sanial.me
+          <Link href="/" className="flex items-center gap-3 text-xl font-bold tracking-tight text-foreground hover:text-primary transition-colors">
+            <Image
+              src={siteConfig.logo}
+              alt="Sanial Das Logo"
+              width={32}
+              height={32}
+              className="rounded-full object-cover"
+            />
+            <span>sanial.me</span>
           </Link>
           <nav className="flex items-center gap-2">
             {navItems.map((item) => (
