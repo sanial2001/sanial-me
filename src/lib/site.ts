@@ -3,6 +3,7 @@ export const siteConfig = {
   title: "Sanial Das — Engineering Blog",
   description:
     "Engineering notes, deep dives, and practical guides on web, systems, and tooling.",
+  logo: "/favicon.jpg", // Company logo
   links: {
     linkedin: "https://www.linkedin.com/in/sanialdas/",
     resume: "/resume.pdf", // Update this path when you add your PDF

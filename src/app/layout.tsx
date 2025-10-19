@@ -19,19 +19,32 @@ export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
   icons: {
-    icon: "/favicon.jpg",
-    shortcut: "/favicon.jpg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.jpg", sizes: "32x32", type: "image/jpeg" },
+      { url: "/favicon.jpg", sizes: "16x16", type: "image/jpeg" }
+    ],
+    shortcut: "/favicon.ico",
     apple: "/favicon.jpg",
   },
   openGraph: {
     title: siteConfig.title,
     description: siteConfig.description,
     type: "website",
+    images: [
+      {
+        url: siteConfig.logo,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.title,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
+    images: [siteConfig.logo],
   },
 };
 
