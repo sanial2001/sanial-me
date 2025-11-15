@@ -1,23 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Post } from "@/lib/site";
 
 export default function PostCard({ post }: { post: Post }) {
   return (
     <Link href={`/blog/${post.slug}`} className="block">
       <article className="group rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 bg-gradient-to-br from-background via-muted/20 to-background hover:border-primary/20 cursor-pointer hover:-translate-y-1">
-        {/* Image */}
-        {post.image && (
-          <div className="relative h-48 w-full overflow-hidden">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
-            />
-          </div>
-        )}
-        
         <div className="p-6">
           <div className="flex items-center justify-between gap-4 text-sm text-muted-foreground mb-4">
             <time dateTime={post.date} className="flex items-center gap-2">

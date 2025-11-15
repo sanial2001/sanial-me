@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { getPostsByTag } from "@/lib/posts";
 import PostCard from "@/_components/PostCard";
 import TagFilter from "@/_components/TagFilter";
 import type { Post } from "@/lib/site";
@@ -13,11 +12,21 @@ interface BlogClientProps {
 
 export default function BlogClient({ allTags, posts }: BlogClientProps) {
   const [selectedTag, setSelectedTag] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
-  // Filter posts based on selected tag
   const filteredPosts = useMemo(() => {
-    return getPostsByTag(selectedTag);
-  }, [selectedTag]);
+    const query = searchQuery.trim().toLowerCase();
+    return posts.filter((post) => {
+      const matchesTag =
+        selectedTag === "all" || post.tags.includes(selectedTag);
+      const matchesQuery =
+        !query ||
+        post.title.toLowerCase().includes(query) ||
+        post.excerpt.toLowerCase().includes(query) ||
+        post.tags.some((tag) => tag.toLowerCase().includes(query));
+      return matchesTag && matchesQuery;
+    });
+  }, [posts, selectedTag, searchQuery]);
 
   // Calculate post counts for each tag
   const postCounts = useMemo(() => {
@@ -40,14 +49,45 @@ export default function BlogClient({ allTags, posts }: BlogClientProps) {
         </p>
       </section>
 
-      {/* Tag Filter Section */}
-      <TagFilter
-        tags={allTags}
-        selectedTag={selectedTag}
-        onTagChange={setSelectedTag}
-        postCounts={postCounts}
-        totalPosts={posts.length}
-      />
+      {/* Tag Filter & Search */}
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="w-full md:flex-1">
+          <TagFilter
+            tags={allTags}
+            selectedTag={selectedTag}
+            onTagChange={setSelectedTag}
+            postCounts={postCounts}
+            totalPosts={posts.length}
+          />
+        </div>
+
+        <div className="relative w-full md:w-80">
+          <label htmlFor="blog-search" className="sr-only">
+            Search posts
+          </label>
+          <input
+            id="blog-search"
+            type="search"
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+            placeholder="Search posts..."
+            className="w-full rounded-2xl border border-border bg-background/80 px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition"
+          />
+          <svg
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
+            />
+          </svg>
+        </div>
+      </div>
 
       {/* Posts Section */}
       <section>
@@ -56,7 +96,7 @@ export default function BlogClient({ allTags, posts }: BlogClientProps) {
             {selectedTag === "all" ? "All Posts" : `${selectedTag.charAt(0).toUpperCase() + selectedTag.slice(1)} Posts`}
           </h2>
           <span className="text-sm font-medium text-muted-foreground bg-muted px-4 py-2 rounded-full">
-            {filteredPosts.length} article{filteredPosts.length !== 1 ? 's' : ''}
+            {filteredPosts.length} article{filteredPosts.length !== 1 ? "s" : ""}
           </span>
         </div>
         
